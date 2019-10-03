@@ -7,6 +7,9 @@ const trans = (x, y, z) => ({
 
 const Card = ({ order, img, arr, shouldFlip, i }) => {
 
+
+
+
   console.log({ img })
 
   const spring = useSpring({
@@ -40,9 +43,8 @@ const Card = ({ order, img, arr, shouldFlip, i }) => {
 }
 
 
-const ShufflingCards = ({ arr }) => {
+const ShufflingCards = ({ arr, targetImg = 0 }) => {
   const [orders, setOrders] = useState(arr.map((_, i) => i));
-  const [targetImg, setTargetImg] = useState();
 
   const shouldFlip = useRef();
 
@@ -76,9 +78,6 @@ const ShufflingCards = ({ arr }) => {
       {arr.map((img, i) => (
         <Card i={i} key={`img${i}`} img={arr[i]} order={orders[i]} arr={arr} shouldFlip={shouldFlip} />
       ))}
-      <button onClick={() => setTargetImg(1)}>Go to 1</button>
-      <button onClick={() => setTargetImg(2)}>Go to 2</button>
-      <button onClick={() => setTargetImg(0)}>Go to 0</button>
     </div>
   );
 }
