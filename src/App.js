@@ -16,16 +16,23 @@ const arr = [
 function App() {
   const [targetImg, setTargetImg] = useState(0);
 
-  const length = 4
+  const length = 6
   const imgs = arr.slice(0, length)
 
   return (
-    <>
-      {imgs.map((_img, i) => <button disabled={i === targetImg} onClick={() => setTargetImg(i)}>Go to {i}</button>)}
+    <div className='page'>
+      <ul className='links'>
+        <li onMouseEnter={() => setTargetImg(0)}>Go to 0</li>
+        <li onMouseEnter={() => setTargetImg(5)}>Go to 5</li>
+        <li onMouseEnter={() => setTargetImg(4)}>Go to 4</li>
+        <li onMouseEnter={() => setTargetImg(3)}>Go to 3</li>
+        <li onMouseEnter={() => setTargetImg(2)}>Go to 2</li>
+        <li onMouseEnter={() => setTargetImg(1)}>Go to 1</li>
+      </ul>
       <ShufflingCards
         targetImg={targetImg}
         arr={imgs} />
-    </>
+    </div>
   );
 }
 

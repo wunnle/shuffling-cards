@@ -54,20 +54,17 @@ const Card = ({ order, img, arr, shouldFlip, i }) => {
       friction: 26
     },
     to: async next => {
+
+      const o = order === 0 ? arr.length : order
+
       if (order === 0) {
         const goUp = -800 - (arr.length - 3) * 30;
-        const o = arr.length;
         if (shouldFlip.current) {
-          console.log(o)
           await next(trans(o * -30, goUp, o * 10));
         }
-        await next(trans(o * -30, o * 30, o * 10));
       }
-      if (order > 0) {
-        const o = order;
-        await next(trans(-30 * o, 30 * o, 10.9 * o));
-        await next(trans(-30 * o, 30 * o, 10 * o));
-      }
+      await next(trans(-30 * o, 30 * o, 11 * o));
+      await next(trans(-30 * o, 30 * o, 10 * o));
     },
     from: trans(50, -50, 0)
   });
